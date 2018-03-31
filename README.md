@@ -1,2 +1,2 @@
 # DebugPrint-C
-C library for debug printing
+C library for debug printing.
