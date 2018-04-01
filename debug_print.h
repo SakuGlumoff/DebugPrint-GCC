@@ -10,7 +10,7 @@
 #define _DEBUG_PRINT_H_
 
 #include <string.h>
-#include <ascii_colors.h>
+#include <ansi_colors.h>
 
 /////////////////////////////////////////
 //// Configurations

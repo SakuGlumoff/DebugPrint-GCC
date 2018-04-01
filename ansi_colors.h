@@ -7,8 +7,8 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-#ifndef _ASCII_COLORS_H
-#define _ASCII_COLORS_H
+#ifndef _ANSI_COLORS_H
+#define _ANSI_COLORS_H
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -19,4 +19,4 @@
 #define ANSI_COLOR_WHITE   "\x1b[37m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
-#endif /* _ASCII_COLORS_H */
+#endif /* _ANSI_COLORS_H */
