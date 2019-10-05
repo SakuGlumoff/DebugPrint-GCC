@@ -43,7 +43,7 @@ extern "C" {
  *        You may implement your usage of the debug printing, be that
  *        printing to a UART port or logging to a file.
  */
-extern void debug_print_callback(char* debugMessage, unsigned int length);
+extern int debug_print_callback(char* debugMessage, unsigned int length);
 
 #ifdef __cplusplus
 }
@@ -80,13 +80,13 @@ extern "C" {
  * \brief Debug-print a parameterized text.
  *        This function adds the Windows style CR+LF to the end.
  */
-void debug_printf_ln(const char* color, const char* fileName, const char* funcName, unsigned int lineNumber, const char* fmt, ...);
+int debug_printf_ln(const char* color, const char* fileName, const char* funcName, unsigned int lineNumber, const char* fmt, ...);
 
 /**
  * \brief Debug-print a non-parameterized text.
  *        This function adds the Windows style CR+LF to the end.
  */
-void debug_print_ln(const char* color, const char* fileName, const char* funcName, unsigned int lineNumber, const char* message);
+int debug_print_ln(const char* color, const char* fileName, const char* funcName, unsigned int lineNumber, const char* message);
 
 #ifdef __cplusplus
 }

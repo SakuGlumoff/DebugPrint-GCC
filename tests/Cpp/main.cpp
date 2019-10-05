@@ -2,8 +2,9 @@
 
 #include "debug_print.h"
 
-void debug_print_callback(char* debugMessage, unsigned int length) {
+int debug_print_callback(char* debugMessage, unsigned int length) {
     printf("%s", debugMessage);
+    return 0;
 }
 
 int main(void) {
