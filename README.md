@@ -15,7 +15,7 @@ These levels and their coloured outputs are as follows:
 | Warning | Yellow |
 | Error   | Red    |
 
-Finally, you will need to implement the `void debug_print_callback(char* debugMessage, unsigned int length)`.   
+Finally, you will need to implement the `int debug_print_callback(char* debugMessage, unsigned int length)`.   
 This callback function is called in the debug print functions so that the user can decide where to and how to print the debug messages.
 
 ## Configuration
