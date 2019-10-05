@@ -12,36 +12,44 @@
 
 #include <debug_print.h>
 
-static inline void _empty_debug_buffer(char* buffer)
+static inline void _empty_debug_buffer(char *buffer)
 {
     memset(buffer, '\0', DGB_PRINT_BUFFER_SIZE);
 }
 
-int debug_printf_ln(const char* color, const char* fileName, const char* funcName, unsigned int lineNumber, const char* fmt, ...)
+int debug_printf_ln(const char *color, const char *fileName, const char *funcName, unsigned int lineNumber, const char *fmt, ...)
 {
     char parameterBuffer[DGB_PRINT_BUFFER_SIZE];
     char outgoingBuffer[DGB_PRINT_BUFFER_SIZE];
     va_list params;
-    
+
     _empty_debug_buffer(parameterBuffer);
     _empty_debug_buffer(outgoingBuffer);
-    
+
     va_start(params, fmt);
     vsnprintf(parameterBuffer, DGB_PRINT_BUFFER_SIZE, fmt, params);
     va_end(params);
-    
-    snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s\r\n%s", color, fileName, funcName, lineNumber, parameterBuffer, ANSI_COLOR_RESET);
-    
+
+    int ret = snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s\r\n%s", color, fileName, funcName, lineNumber, parameterBuffer, ANSI_COLOR_RESET);
+    if (ret < 0)
+    {
+        return DBG_PRINT_BUFFER_TOO_SMALL;
+    }
+
     return debug_print_callback(outgoingBuffer, DGB_PRINT_BUFFER_SIZE);
 }
 
-int debug_print_ln(const char* color, const char* fileName, const char* funcName, unsigned int lineNumber, const char* message)
+int debug_print_ln(const char *color, const char *fileName, const char *funcName, unsigned int lineNumber, const char *message)
 {
     char outgoingBuffer[DGB_PRINT_BUFFER_SIZE];
-    
+
     _empty_debug_buffer(outgoingBuffer);
-    
-    snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s\r\n%s", color, fileName, funcName, lineNumber, message, ANSI_COLOR_RESET);
-    
+
+    int ret = snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s\r\n%s", color, fileName, funcName, lineNumber, message, ANSI_COLOR_RESET);
+    if (ret < 0)
+    {
+        return DBG_PRINT_BUFFER_TOO_SMALL;
+    }
+
     return debug_print_callback(outgoingBuffer, DGB_PRINT_BUFFER_SIZE);
 }
