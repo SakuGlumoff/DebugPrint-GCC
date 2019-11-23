@@ -1,6 +1,5 @@
 /* MIT License
  *
- * Portion copyright (C) 2018 Saku Rautio
  * Original work by Andrejs Cainikovs. https://stackoverflow.com/a/3219471
  *
  * This software may be modified and distributed under the terms

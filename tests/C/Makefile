@@ -1,7 +1,4 @@
-INCLUDES = \
--I../../
-
-CFLAGS = -Wall -g $(INCLUDES) -Og
+CFLAGS = -Wall -g -I../../ -Og
 
 BUILD_DIR = build
 
