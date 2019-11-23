@@ -33,7 +33,7 @@ See the `debug_print.h` file for more info.
 The colour of the output depends on the used debug level but message format stays the same.
 
 The output format is `[<filename>:<function name>():<line number>]: <message>`.
-An example output would be:
+An example output would be: `[main.c:main():13]: Initializing`.
 
 ## License
 
