@@ -1,5 +1,7 @@
 # DebugPrint GCC
 
+![](https://github.com/SakuRautio/DebugPrint-GCC/workflows/Tests/badge.svg)
+
 ## About
 
 C library for debug printing with GCC.
