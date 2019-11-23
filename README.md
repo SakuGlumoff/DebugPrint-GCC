@@ -6,10 +6,7 @@ C library for debug printing with GCC.
 
 ## Usage
 
-There are two types of macros. One for printing only a single message and other for printing a message with parameters.
-`DBG_PRINTF_XXXX` for printing parametrized messages and `DBG_PRINT_XXXX` for printing single simple messages.
-
-These two types of macros themselves are split into 4 parts, depending on the debugging level.
+Use the `DBG_PRINTF_X` macro for printing, where `X` is the debug level.
 These levels and their coloured outputs are as follows:
 
 | Level   | Colour |
@@ -21,6 +18,8 @@ These levels and their coloured outputs are as follows:
 
 Finally, you will need to implement the `int debug_print_callback(char* debugMessage, unsigned int length)`.
 This callback function is called in the debug print functions so that the user can decide where to and how to print the debug messages.
+
+See the `debug_print.h` file for more info.
 
 ## Configuration
 
