@@ -26,5 +26,5 @@ int debug_printf_ln(const char *color, const char *fileName, const char *funcNam
         return DBG_PRINT_BUFFER_TOO_SMALL;
     }
 
-    return debug_print_callback(outgoingBuffer, DGB_PRINT_BUFFER_SIZE);
+    return debug_print_callback(outgoingBuffer, (DGB_PRINT_BUFFER_SIZE < ret) ? DGB_PRINT_BUFFER_SIZE : (unsigned int)ret);
 }
