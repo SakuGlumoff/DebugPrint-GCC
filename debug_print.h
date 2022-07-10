@@ -20,6 +20,13 @@
 #define DBG_PRINT_ENABLED (1)
 #endif /* DBG_PRINT_ENABLED */
 
+#ifndef DBG_PRINT_NEWLINE
+/**
+ * The new line sequence to print after each message
+ */
+#define DBG_PRINT_NEWLINE "\n"
+#endif
+
 #ifndef DGB_PRINT_BUFFER_SIZE
 /**
  * How large can the debug message be in characters
@@ -80,6 +87,12 @@ extern "C"
 *        This function adds the Windows style CR+LF to the end.
 */
 int debug_printf_ln(const char *color, const char *fileName, const char *funcName, unsigned int lineNumber, const char *fmt, ...);
+
+/**
+* \brief Debug-print a parameterized text.
+*        This function doesn't add the Windows style CR+LF to the end.
+*/
+int debug_printf(const char *color, const char *fileName, const char *funcName, unsigned int lineNumber, const char *fmt, ...);
 
 
 #ifdef __cplusplus

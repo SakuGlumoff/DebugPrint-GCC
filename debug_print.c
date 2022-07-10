@@ -20,7 +20,7 @@ int debug_printf_ln(const char *color, const char *fileName, const char *funcNam
     vsnprintf(parameterBuffer, DGB_PRINT_BUFFER_SIZE, fmt, params);
     va_end(params);
 
-    int ret = snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s\r\n%s", color, fileName, funcName, lineNumber, parameterBuffer, ANSI_COLOR_RESET);
+    int ret = snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s%s", color, fileName, funcName, lineNumber, parameterBuffer, ANSI_COLOR_RESET DBG_PRINT_NEWLINE);
     if (ret < 0)
     {
         return DBG_PRINT_BUFFER_TOO_SMALL;
