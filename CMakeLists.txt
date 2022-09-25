@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.23)
+
+set(DEBUGPRINT_GCC_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/debug_print.c
+)
+
+add_library(DEBUGPRINT_GCC PUBLIC ${DEBUGPRINT_GCC_SOURCES})
+
+target_include_directories(DEBUGPRINT_GCC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
