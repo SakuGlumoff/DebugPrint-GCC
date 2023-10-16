@@ -27,6 +27,8 @@ See the `debug_print.h` file for more info.
 
 * Define `DBG_PRINT_ENABLED` to 1/0 enable/disable debug printing.
 * Define `DGB_PRINT_BUFFER_SIZE` to set the debug print message buffer size.
+* Define `DBG_PRINT_ENABLE_TIMESTAMP` to 1/0 to include/exclude timestamps in debug messages.
+  * **NOTE**: You must implement `time_t debug_print_get_timestamp(void)` which returns the timestamp from the system.
 
 ## Output
 
