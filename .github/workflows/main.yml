@@ -12,10 +12,12 @@ jobs:
     - name: Run C tests
       run: |
         cd tests/C
-        make
-        ./build/main.exe
+        make all
+        ./build/basic.exe
+        ./build/timestamp.exe
     - name: Run C++ tests
       run: |
         cd tests/Cpp
-        make
-        ./build/main.exe
+        make all
+        ./build/basic.exe
+        ./build/timestamp.exe

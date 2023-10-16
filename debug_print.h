@@ -27,6 +27,27 @@
 #define DBG_PRINT_NEWLINE "\n"
 #endif
 
+#ifndef DBG_PRINT_ENABLE_TIMESTAMP
+/**
+ * Enable printing a timestamp
+ */
+#define DBG_PRINT_ENABLE_TIMESTAMP (0)
+#endif
+
+#ifndef DBG_PRINT_TIMESTAMP_LENGTH
+/**
+ * How long can the timestamp be in characters
+ */
+#define DBG_PRINT_TIMESTAMP_LENGTH (25)
+#endif
+
+#ifndef DBG_PRINT_TIMESTAMP_FORMAT
+/**
+ * How should the timestamp be formatted
+ */
+#define DBG_PRINT_TIMESTAMP_FORMAT "%Y-%m-%dT%H:%M:%S%z"
+#endif
+
 #ifndef DGB_PRINT_BUFFER_SIZE
 /**
  * How large can the debug message be in characters
@@ -56,6 +77,15 @@ extern "C"
 *        printing to a UART port or logging to a file.
 */
 extern int debug_print_callback(char *debugMessage, unsigned int length);
+
+#if DBG_PRINT_ENABLE_TIMESTAMP
+#include <time.h>
+/**
+ * \brief Callback function to be implemented by the user.
+ *        This callback function will be called to get a timestamp for the debug message.
+ */
+extern time_t debug_print_get_timestamp(void);
+#endif /* DBG_PRINT_ENABLE_TIMESTAMP */
 
 #ifdef __cplusplus
 }

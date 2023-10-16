@@ -10,6 +10,8 @@ int debug_print_callback(char* debugMessage, unsigned int length)
 
 int main(void)
 {
+    printf("--- Basic test start ---\n");
+
     DBG_PRINTF_DEBUG("Debug");
     DBG_PRINTF_TRACE("Trace");
     DBG_PRINTF_WARNING("Warning");
@@ -21,6 +23,9 @@ int main(void)
         DBG_PRINTF_TRACE("Trace (%d)", i);
         DBG_PRINTF_WARNING("Warning (%d)", i);
         DBG_PRINTF_ERROR("Error (%d)", i);
-    }    
+    }
+
+    printf("--- Basic test end ---\n");
+
     return 0;
 }

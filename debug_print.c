@@ -20,7 +20,14 @@ int debug_printf_ln(const char *color, const char *fileName, const char *funcNam
     vsnprintf(parameterBuffer, DGB_PRINT_BUFFER_SIZE, fmt, params);
     va_end(params);
 
+#if DBG_PRINT_ENABLE_TIMESTAMP
+    char timestamp_str[DBG_PRINT_TIMESTAMP_LENGTH] = {0};
+    time_t timestamp = debug_print_get_timestamp();
+    strftime(timestamp_str, DBG_PRINT_TIMESTAMP_LENGTH, DBG_PRINT_TIMESTAMP_FORMAT, localtime(&timestamp));
+    int ret = snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s<%s>[%s:%s():%u]: %s%s", color, timestamp_str, fileName, funcName, lineNumber, parameterBuffer, ANSI_COLOR_RESET DBG_PRINT_NEWLINE);
+#else
     int ret = snprintf(outgoingBuffer, DGB_PRINT_BUFFER_SIZE, "%s[%s:%s():%u]: %s%s", color, fileName, funcName, lineNumber, parameterBuffer, ANSI_COLOR_RESET DBG_PRINT_NEWLINE);
+#endif
     if (ret < 0)
     {
         return DBG_PRINT_BUFFER_TOO_SMALL;
